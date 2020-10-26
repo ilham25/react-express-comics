@@ -24,10 +24,12 @@ export default function Sql() {
       "INSERT INTO comics_table (title,creator,publisher) VALUES (?,?,?)";
     db.query(sqlInsert, data, (err, res) => {
       if (err) throw err;
+      console.log("data insert");
     });
   };
 
   return {
     get,
+    insert,
   };
 }

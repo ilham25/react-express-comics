@@ -7,7 +7,10 @@ const app = Express();
 const port = 3030;
 const sql = Sql();
 
-app.post("/api/insert", (req, res) => {});
+app.post("/api/insert", (req, res) => {
+  sql.insert(["horimiya", "unk", "pub"]);
+  res.send("data insert");
+});
 
 app.get("/", (req, res) => {
   sql.get(null, (result) => {
