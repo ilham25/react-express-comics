@@ -8,13 +8,19 @@ const port = 3030;
 const sql = Sql();
 
 app.use(Cors());
-app.use(BodyParser({ extended: true }));
 app.use(Express.json());
+app.use(Express.urlencoded({ extended: true }));
 
 app.post("/api/insert", (req, res) => {
   const { title, creator, publisher } = req.body;
-  // console.log(title, creator, publisher);
+  // console.log("POST : ", title);
   sql.insert([title, creator, publisher]);
+});
+
+app.delete("/api/delete/:id", (req, res) => {
+  const id = req.params.id;
+  // console.log("DELETE : ", id);
+  sql.remove(id);
 });
 
 app.get("/api", (req, res) => {

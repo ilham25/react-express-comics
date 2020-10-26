@@ -28,8 +28,17 @@ export default function Sql() {
     });
   };
 
+  const remove = (id) => {
+    const sqlRemove = "DELETE FROM comics_table where id=?";
+    db.query(sqlRemove, id, (err, res) => {
+      if (err) throw err;
+      console.log("data remove");
+    });
+  };
+
   return {
     get,
     insert,
+    remove,
   };
 }
